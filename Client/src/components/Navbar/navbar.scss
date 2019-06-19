@@ -5,3 +5,50 @@
     padding-right: 10px;
   }
 }
+
+.onoffswitch {
+  position: relative;
+  width: 40px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 16px;
+  padding: 0;
+  line-height: 16px;
+  border: 2px solid #999999;
+  border-radius: 16px;
+  background-color: #eeeeee;
+  transition: background-color 0.1s ease-in;
+}
+.onoffswitch-label:before {
+  content: "";
+  display: block;
+  width: 16px;
+  margin: 0px;
+  background: #ffffff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 22px;
+  border: 2px solid #999999;
+  border-radius: 16px;
+  transition: all 0.1s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: #34a7c1;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label,
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  border-color: #34a7c1;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0px;
+}
