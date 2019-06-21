@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
-import { Navbar } from "./components/ModuleExports";
+import { Navbar, CardList } from "./components/ModuleExports";
 
 const App = () => {
   return (
     <Fragment>
       <Navbar />
+      <CardList />
     </Fragment>
   );
 };
