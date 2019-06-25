@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import NavBarToggle from "./NavBarToggle";
 import "./navbar.scss";
 
-const Navbar = () => {
-  let [isDark, setDark] = useState(false);
+const Navbar = ({ isDark, setDark }) => {
   let [isBurgerToggled, toggleBurger] = useState(false);
+
   return (
     <nav
       aria-label="main navigation"
@@ -41,20 +41,20 @@ const Navbar = () => {
 
       <div
         id="navbarBasicExample"
-        class={isBurgerToggled ? "navbar-menu is-active" : "navbar-menu"}
+        className={isBurgerToggled ? "navbar-menu is-active" : "navbar-menu"}
       >
         <div className="navbar-end">
-          <a href="/" class="navbar-item">
+          <a href="/" className="navbar-item">
             Home
           </a>
-          <a href="/about" class="navbar-item">
+          <a href="/about" className="navbar-item">
             About
           </a>
-          <a href="/contact" class="navbar-item">
+          <a href="/contact" className="navbar-item">
             Contact
           </a>
           <div className="navbar-item">
-            <NavBarToggle isDark={isDark} setDark={setDark} />
+            <NavBarToggle isDark={isDark} setDark={() => setDark(!isDark)} />
           </div>
         </div>
       </div>

@@ -1,10 +1,12 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { Navbar } from "./components/ModuleExports";
 
-const App = () => {
+const App = ({ isDark, setDark }) => {
+  [isDark, setDark] = useState(false);
+
   return (
     <Fragment>
-      <Navbar />
+      <Navbar isDark={isDark} setDark={setDark} />
     </Fragment>
   );
 };
