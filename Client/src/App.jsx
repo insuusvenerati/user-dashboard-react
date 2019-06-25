@@ -1,15 +1,15 @@
-import React, { useState, Fragment } from "react";
-import { Navbar, CardList } from "./components/ModuleExports";
+import React from 'react'
+import { StoreProvider } from 'easy-peasy'
+import store from './Store'
+import { Navbar, CardList } from './components/ModuleExports'
 
-const App = ({ isDark, setDark }) => {
-  [isDark, setDark] = useState(false);
-
+const App = () => {
   return (
-    <Fragment>
-      <Navbar isDark={isDark} setDark={setDark} />
+    <StoreProvider store={store}>
+      <Navbar />
       <CardList />
-    </Fragment>
-  );
-};
+    </StoreProvider>
+  )
+}
 
-export default App;
+export default App
