@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Navbar } from "./components/ModuleExports";
+import { Navbar, CardList } from "./components/ModuleExports";
 
 const App = ({ isDark, setDark }) => {
   [isDark, setDark] = useState(false);
@@ -7,6 +7,7 @@ const App = ({ isDark, setDark }) => {
   return (
     <Fragment>
       <Navbar isDark={isDark} setDark={setDark} />
+      <CardList />
     </Fragment>
   );
 };
