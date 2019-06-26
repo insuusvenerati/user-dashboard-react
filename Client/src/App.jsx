@@ -1,14 +1,16 @@
 import React from 'react'
-import { StoreProvider } from 'easy-peasy'
-import store from './Store'
 import { Navbar, CardList } from './components/ModuleExports'
+import Html from './components/Html/Html'
+import Content from './components/Content/Content'
 
 const App = () => {
   return (
-    <StoreProvider store={store}>
-      <Navbar />
-      <CardList />
-    </StoreProvider>
+    <Html>
+      <Content>
+        <Navbar />
+        <CardList />
+      </Content>
+    </Html>
   )
 }
 
