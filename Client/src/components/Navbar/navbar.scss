@@ -29,7 +29,7 @@
   transition: background-color 0.1s ease-in;
 }
 .onoffswitch-label:before {
-  content: "";
+  content: '';
   display: block;
   width: 16px;
   margin: 0px;
@@ -43,11 +43,11 @@
   transition: all 0.1s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label {
-  background-color: #34a7c1;
+  background-color: #3eb650;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label,
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-  border-color: #34a7c1;
+  border-color: #3eb650;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
   right: 0px;

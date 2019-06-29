@@ -1,7 +1,8 @@
-import React from 'react';
-import './index.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import './index.scss'
 
-const Card = ({ id, title, body }) => {
+const Card = ({ title }) => {
   return (
     <div className="tile is-parent">
       <div className="card card-1 tile is-child">
@@ -16,12 +17,13 @@ const Card = ({ id, title, body }) => {
         <header className="card-header">
           <p className="card-header-title">{title}</p>
         </header>
-        <div className="card-content">
-          <div className="content">{body}</div>
-        </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+Card.propTypes = {
+  title: PropTypes.string.isRequired
+}
+
+export default Card

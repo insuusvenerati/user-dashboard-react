@@ -6,6 +6,7 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const Navbar = () => {
   let [isBurgerToggled, toggleBurger] = useState(false)
+  const getZones = useStoreActions(actions => actions.zones.getZones)
   const isDark = useStoreState(state => state.theme.isDark)
   const setDark = useStoreActions(actions => actions.theme.setDark)
 
@@ -13,7 +14,7 @@ const Navbar = () => {
     <nav
       aria-label="main navigation"
       role="navigation"
-      className={isDark ? 'navbar is-dark' : 'navbar'}
+      className={isDark ? 'navbar is-dark' : 'navbar is-light'}
       style={{
         boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
       }}
@@ -59,6 +60,17 @@ const Navbar = () => {
           <a href="/contact" className="navbar-item">
             Contact
           </a>
+          <div className="navbar-item">
+            <div className="buttons">
+              <button
+                onClick={() => getZones()}
+                className={isDark ? 'button is-warning' : 'button is-primary'}
+              >
+                Get Zones
+              </button>
+            </div>
+          </div>
+
           <div className="navbar-item">
             <NavBarToggle isDark={isDark} setDark={() => setDark(!isDark)} />
           </div>
