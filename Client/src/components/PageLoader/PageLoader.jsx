@@ -1,11 +1,10 @@
 import React from 'react'
+import Loader from 'react-loading'
 
 const PageLoader = () => {
   return (
     <div>
-      <div className="pageloader">
-        <span className="title">Pageloader</span>
-      </div>
+      <Loader />
     </div>
   )
 }

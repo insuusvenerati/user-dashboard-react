@@ -6,9 +6,9 @@ import { useStoreState, useStoreActions } from 'easy-peasy'
 
 const Navbar = () => {
   let [isBurgerToggled, toggleBurger] = useState(false)
-  const getZones = useStoreActions(actions => actions.zones.getZones)
   const isDark = useStoreState(state => state.theme.isDark)
   const setDark = useStoreActions(actions => actions.theme.setDark)
+  const getZones = useStoreActions(actions => actions.zones.getZones)
 
   return (
     <nav
@@ -70,7 +70,6 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-
           <div className="navbar-item">
             <NavBarToggle isDark={isDark} setDark={() => setDark(!isDark)} />
           </div>

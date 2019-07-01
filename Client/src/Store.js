@@ -33,7 +33,8 @@ const store = createStore(model, {
     persistReducer(
       {
         key: 'easypeasystate',
-        storage
+        storage,
+        blacklist: ['zones']
       },
       reducer
     )

@@ -9,7 +9,7 @@ const Card = ({ title }) => {
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src="https://bulma.io/images/placeholders/1280x960.png"
+              src="https://www.wallpaperflare.com/static/151/52/866/world-of-warcraft-lich-king-video-games-world-of-warcraft-wrath-of-the-lich-king-wallpaper.jpg"
               alt="Placeholder"
             />
           </figure>
