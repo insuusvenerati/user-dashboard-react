@@ -40,7 +40,9 @@ const CardList = () => {
       <section className="section">
         <div className="columns">
           <div className="column is-three-fifths is-offset-two-fifths">
-            <ReactLoading type={'bars'} height={100} width={100} />
+            <h1 className="title">
+              Select <strong>Get Zones</strong> to get Started
+            </h1>
           </div>
         </div>
       </section>
