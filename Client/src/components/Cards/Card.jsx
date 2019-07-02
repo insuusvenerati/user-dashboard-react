@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './index.scss'
+import styles from './index.module.scss'
+import className from 'classnames'
+
+const cardStyle = className(styles.card1, 'card tile is-child')
 
 const Card = ({ title }) => {
   return (
     <div className="tile is-parent">
-      <div className="card card-1 tile is-child">
+      <div className={cardStyle}>
         <div className="card-image">
           <figure className="image is-4by3">
             <img
@@ -15,7 +18,7 @@ const Card = ({ title }) => {
           </figure>
         </div>
         <header className="card-header">
-          <p className="card-header-title">{title}</p>
+          <p className="card-header-title has-text-light">{title}</p>
         </header>
       </div>
     </div>

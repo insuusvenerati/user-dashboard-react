@@ -1,7 +1,5 @@
 import React from 'react'
-import { Navbar, CardList } from './components/ModuleExports'
-import Html from './components/Html/Html'
-import Content from './components/Content/Content'
+import { Navbar, CardList, Html, Content } from './components/ModuleExports'
 
 const App = () => {
   return (

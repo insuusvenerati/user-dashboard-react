@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
+import classNames from 'classnames'
 import NavBarToggle from './NavBarToggle'
 import './navbar.scss'
 import { useStoreState, useStoreActions } from 'easy-peasy'
@@ -10,13 +11,21 @@ const Navbar = () => {
   const setDark = useStoreActions(actions => actions.theme.setDark)
   const getZones = useStoreActions(actions => actions.zones.getZones)
 
+  const burgerButtonStyle = classNames(
+    isBurgerToggled ? 'navbar-burger burger is-active' : 'navbar-burger burger'
+  )
+
+  const burgerIsDark = classNames()
+
   return (
     <nav
       aria-label="main navigation"
       role="navigation"
       className={isDark ? 'navbar is-dark' : 'navbar is-light'}
       style={{
-        boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+        // boxShadow: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+        /* offset-x | offset-y | blur-radius | color */
+        boxShadow: '1px 1px 200px grey'
       }}
     >
       <div className="navbar-brand">
@@ -30,11 +39,7 @@ const Navbar = () => {
         </a>
         <a
           role="button"
-          className={
-            isBurgerToggled
-              ? 'navbar-burger burger is-active'
-              : 'navbar-burger burger'
-          }
+          className={burgerButtonStyle}
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarBasicExample"

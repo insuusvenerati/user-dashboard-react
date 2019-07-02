@@ -2,35 +2,38 @@
 import React, { useEffect } from 'react'
 import Card from './Card'
 import ErrorBoundary from 'react-error-boundary'
+import classNames from 'classnames'
 import ReactLoading from 'react-loading'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import _ from 'lodash'
 
+function randomFourArray(arr) {
+  const fourZones = _.chunk(arr, 4)
+  const randomFourZones =
+    fourZones[Math.floor(Math.random() * fourZones.length)]
+  return randomFourZones
+}
+
+const columnStyle = classNames('column is-three-fifths is-offset-two-fifths')
+
 const CardList = () => {
-  const isDark = useStoreState(state => state.theme.isDark)
   const zones = useStoreState(state => state.zones.zoneList)
   const getZones = useStoreActions(actions => actions.zones.getZones)
   const loadingZones = useStoreState(state => state.zones.loadingZones)
-  const fourZones = _.chunk(zones, 4)
-  const randomZones = fourZones[Math.floor(Math.random() * fourZones.length)]
 
-  // useEffect(() => {
-  //   if (zones.length < 1) {
-  //     getZones()
-  //   }
-  // }, [])
+  const randomZones = randomFourArray(zones)
 
+  useEffect(() => {
+    if (zones.length < 1) {
+      getZones()
+    }
+  }, [])
   if (loadingZones) {
     return (
       <section className="section">
         <div className="columns">
-          <div className="column is-three-fifths is-offset-two-fifths">
-            <ReactLoading
-              color={isDark ? '#ffffff' : '#292930'}
-              type={'bars'}
-              height={100}
-              width={100}
-            />
+          <div className={columnStyle}>
+            <ReactLoading type={'bars'} height={100} width={100} />
           </div>
         </div>
       </section>
@@ -39,10 +42,11 @@ const CardList = () => {
     return (
       <section className="section">
         <div className="columns">
-          <div className="column is-three-fifths is-offset-two-fifths">
-            <h1 className="title">
-              Select <strong>Get Zones</strong> to get Started
-            </h1>
+          <h1 className="title">
+            Select <strong>Get Zones</strong> to get Started
+          </h1>
+          <div className={columnStyle}>
+            <ReactLoading type={'bars'} height={100} width={100} />
           </div>
         </div>
       </section>
@@ -63,5 +67,8 @@ const CardList = () => {
     )
   }
 }
-
+CardList.whyDidYouRender = {
+  logOnDifferentValues: true,
+  customName: 'EnhancedMenu'
+}
 export default CardList
