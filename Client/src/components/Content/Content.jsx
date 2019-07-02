@@ -8,7 +8,7 @@ const Content = props => {
     <div
       style={
         isDark
-          ? { height: '100vh', backgroundColor: '#18181E' }
+          ? { height: '100vh', backgroundColor: '#181712' }
           : { height: '100vh' }
       }
     >

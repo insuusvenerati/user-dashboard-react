@@ -2,7 +2,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies */
 const { override, addWebpackPlugin } = require('customize-cra')
-const path = require('path')
 const glob = require('glob-all')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const paths = require('react-scripts/config/paths')
