@@ -12,15 +12,19 @@ const model = {
   zones: {
     loadingZones: false,
     setLoading: action((state, payload) => {
-      state.loadingZones = payload
+      try {
+        state.loadingZones = payload
+      } catch (error) {
+        console.log(error)
+      }
     }),
     zoneList: [],
     addZones: action((state, payload) => {
-      state.zoneList.push(...payload.zones)
+      state.zoneList.push(...payload)
     }),
     getZones: thunk(async (actions, payload) => {
       actions.setLoading(true)
-      const res = await fetch('/BlizzardMasterZoneLIst.json')
+      const res = await fetch('/ZoneList.json')
       payload = await res.json()
       actions.addZones(payload)
       actions.setLoading(false)

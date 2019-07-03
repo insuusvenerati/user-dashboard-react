@@ -15,8 +15,6 @@ const Navbar = () => {
     isBurgerToggled ? 'navbar-burger burger is-active' : 'navbar-burger burger'
   )
 
-  const burgerIsDark = classNames()
-
   return (
     <nav
       aria-label="main navigation"

@@ -58,7 +58,7 @@ const CardList = () => {
           <div className="container">
             <div className="tile is-ancestor">
               {randomZones.map(zone => {
-                return <Card key={zone.id} title={zone.location.name} />
+                return <Card key={zone.ID} title={zone.Name_lang} />
               })}
             </div>
           </div>
