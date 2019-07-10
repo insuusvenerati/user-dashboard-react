@@ -6,7 +6,8 @@ import App from './App.jsx'
 
 Sentry.init({
   dsn: 'https://c32c2489e254411390ac3e9f10d731c5@sentry.io/1495710',
-  release: '1.0.0'
+  release: '1.0.0',
+  environment: 'prod'
 })
 
 if (process.env.NODE_ENV === 'development') {

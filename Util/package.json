@@ -1,0 +1,10 @@
+{
+  "name": "util",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/cli": "^1.46.0",
+    "dotenv": "^8.0.0"
+  }
+}
