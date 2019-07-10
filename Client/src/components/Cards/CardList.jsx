@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import ReactLoading from 'react-loading'
 import { useStoreState, useStoreActions } from 'easy-peasy'
 import _ from 'lodash'
+import { throws } from 'assert'
 
 function randomFourArray(arr) {
   const fourZones = _.chunk(arr, 4)
@@ -28,6 +29,12 @@ const CardList = () => {
       getZones()
     }
   }, [])
+
+  // eslint-disable-next-line handle-callback-err
+  function methodDoesntexist(error) {
+    throw new Error(error)
+  }
+
   if (loadingZones) {
     return (
       <section className="section">
@@ -62,6 +69,9 @@ const CardList = () => {
               })}
             </div>
           </div>
+          <button onClick={methodDoesntexist('error')} className="button">
+            Button
+          </button>
         </section>
       </ErrorBoundary>
     )
