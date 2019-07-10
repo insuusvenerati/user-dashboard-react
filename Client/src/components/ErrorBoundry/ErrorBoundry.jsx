@@ -7,21 +7,13 @@ export default class ErrorBoundry extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      eventId: null
+      hasError: false
     }
   }
 
-  // eslint-disable-next-line handle-callback-err
-  static getDerivedStateFromError(error) {
-    return { hasError: true }
-  }
-
-  componentDidCatch(error, errorInfo) {
-    Sentry.withScope(scope => {
-      scope.setExtras(errorInfo)
-      const eventId = Sentry.captureException(error)
-      this.setState({ eventId })
-    })
+  componentDidCatch(err, info) {
+    this.setState({ hasError: true })
+    Sentry.captureException(err)
   }
 
   render() {
