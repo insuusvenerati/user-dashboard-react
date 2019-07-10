@@ -9,7 +9,7 @@ Sentry.init({
   release: 'wow-zone-list@1.0.0'
 })
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   const whyDidYouRender = require('@welldone-software/why-did-you-render/dist/no-classes-transpile/umd/whyDidYouRender.min.js')
   whyDidYouRender(React)
 }

@@ -1,7 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import React, { useEffect } from 'react'
 import Card from './Card'
-import ErrorBoundary from 'react-error-boundary'
+import ErrorBoundary from '../ErrorBoundry/ErrorBoundry'
 import classNames from 'classnames'
 import ReactLoading from 'react-loading'
 import { useStoreState, useStoreActions } from 'easy-peasy'
@@ -32,7 +32,7 @@ const CardList = () => {
 
   // eslint-disable-next-line handle-callback-err
   function methodDoesntexist(error) {
-    throw new Error(error)
+    return new Error(error)
   }
 
   if (loadingZones) {
