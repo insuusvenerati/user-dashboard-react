@@ -3,8 +3,13 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+
+variables:
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)./Client/yarn
+
 pool:
   vmImage: 'ubuntu-latest'
+
 
 steps:
 - task: NodeTool@0
@@ -12,9 +17,25 @@ steps:
     versionSpec: '12.6.0'
   displayName: 'Install Node.js'
 
+- task: CacheBeta@0
+  inputs:
+    key: |
+      yarn
+      $(Agent.OS)
+      $(Build.SourcesDirectory)/Client/yarn.lock
+    path: $(YARN_CACHE_FOLDER)
+  displayName: 'Cache Yarn folders'
+
+
 - script: |
-    yarn global add yarn
-    cd Client
     yarn
     yarn build
+  workingDirectory: $(Build.SourcesDirectory)/Client
   displayName: 'npm install and build'
+
+- script: |
+    yarn deploy
+  workingDirectory: $(Build.SourcesDirectory)/Client
+  env:
+    NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
+  displayName: 'Deploy to netlify'
