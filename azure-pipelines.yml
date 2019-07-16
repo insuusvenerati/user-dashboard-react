@@ -29,9 +29,18 @@ stages:
           yarn build
         workingDirectory: $(Build.SourcesDirectory)
         displayName: 'npm install and build'
+      # - task: CopyFiles@2
+      #   inputs:
+      #     sourceFolder: $(Build.SourcesDirectory)
+      #     contents: |
+      #       build/**
+      #       .netlify/**
+      #     flattenFolders: true
+      #     targetFolder: $(Build.ArtifactStagingDirectory)
+      - script: cp -R build/ .netlify/ netlify.toml $(Build.ArtifactStagingDirectory)
       - task: PublishPipelineArtifact@1
         inputs:
-          path: $(Build.SourcesDirectory)/build
+          path: $(Build.ArtifactStagingDirectory)
           artifact: 'WebApp'
 
 - stage: deploy
@@ -45,7 +54,7 @@ stages:
           inputs:
             buildType: 'current'
             artifactName: 'WebApp'
-            targetPath: '$(Build.SourcesDirectory)/build'
+            targetPath: '$(Pipeline.Workspace)'
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
@@ -57,7 +66,7 @@ stages:
             steps:
               - script: |
                   sudo npm i -g netlify-cli
-                  ntl deploy --dir=Build --prod
+                  ntl deploy --dir=build --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
 
