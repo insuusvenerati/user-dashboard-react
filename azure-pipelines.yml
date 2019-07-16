@@ -5,7 +5,7 @@
 
 
 variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)./Client/yarn
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)./yarn
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -22,7 +22,7 @@ steps:
     key: |
       yarn
       $(Agent.OS)
-      $(Build.SourcesDirectory)/Client/yarn.lock
+      $(Build.SourcesDirectory)/yarn.lock
     path: $(YARN_CACHE_FOLDER)
   displayName: 'Cache Yarn folders'
 
@@ -30,12 +30,12 @@ steps:
 - script: |
     yarn
     yarn build
-  workingDirectory: $(Build.SourcesDirectory)/Client
+  workingDirectory: $(Build.SourcesDirectory)
   displayName: 'npm install and build'
 
 - script: |
     yarn deploy
-  workingDirectory: $(Build.SourcesDirectory)/Client
+  workingDirectory: $(Build.SourcesDirectory)
   env:
     NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
   displayName: 'Deploy to netlify'
