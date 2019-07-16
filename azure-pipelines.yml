@@ -46,7 +46,6 @@ stages:
             buildType: 'current'
             downloadType: 'single'
             artifactName: 'WebApp'
-    - job: deploy
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
