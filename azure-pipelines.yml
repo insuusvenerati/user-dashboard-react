@@ -1,8 +1,3 @@
-# Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
   - develop
   - master
@@ -10,50 +5,54 @@ trigger:
 variables:
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)./yarn
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
+- stage: Build
+  jobs:
+    - job: Build
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '12.6.0'
+        displayName: 'Install Node.js'
 
-jobs:
-  - job: Build
-    steps:
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '12.6.0'
-      displayName: 'Install Node.js'
+      - task: CacheBeta@0
+        inputs:
+          key: |
+            yarn
+            $(Agent.OS)
+            $(Build.SourcesDirectory)/yarn.lock
+          path: $(YARN_CACHE_FOLDER)
+        displayName: 'Cache Yarn folders'
 
-    - task: CacheBeta@0
-      inputs:
-        key: |
+      - script: |
           yarn
-          $(Agent.OS)
-          $(Build.SourcesDirectory)/yarn.lock
-        path: $(YARN_CACHE_FOLDER)
-      displayName: 'Cache Yarn folders'
+          yarn build
+        workingDirectory: $(Build.SourcesDirectory)
+        displayName: 'npm install and build'
 
-    - script: |
-        yarn
-        yarn build
-      workingDirectory: $(Build.SourcesDirectory)
-      displayName: 'npm install and build'
+      - task: PublishPipelineArtifact@1
+        inputs:
+          path: $(Build.SourcesDirectory)/build
+          artifact: Build
 
-    - task: PublishPipelineArtifact@1
-      inputs:
-        path: $(Build.SourcesDirectory)/build
-        artifact: Build
-
-  - deployment: DeployJob
-    pool:
-      vmImage: 'ubuntu-latest'
-    displayName: Deploy to Netlify
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-            - script: |
-                yarn deploy
-              env:
-                NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
-# - script: |
+- stage: deploy
+  jobs:
+    - job: deploy
+    - deployment: DeployJob
+      pool:
+        vmImage: 'ubuntu-latest'
+      displayName: Deploy to Netlify
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - script: |
+                  yarn deploy
+                env:
+                  NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
+    # - script: |
 #     yarn deploy
 #   workingDirectory: $(Build.SourcesDirectory)
 #   env:
