@@ -16,7 +16,6 @@ stages:
         inputs:
           versionSpec: '12.6.0'
         displayName: 'Install Node.js'
-
       - task: CacheBeta@0
         inputs:
           key: |
@@ -25,13 +24,11 @@ stages:
             $(Build.SourcesDirectory)/yarn.lock
           path: $(YARN_CACHE_FOLDER)
         displayName: 'Cache Yarn folders'
-
       - script: |
           yarn
           yarn build
         workingDirectory: $(Build.SourcesDirectory)
         displayName: 'npm install and build'
-
       - task: PublishPipelineArtifact@1
         inputs:
           path: $(Build.SourcesDirectory)/build
@@ -70,11 +67,3 @@ stages:
                   ntl deploy --dir=WebApp --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
-
-
-    # - script: |
-#     yarn deploy
-#   workingDirectory: $(Build.SourcesDirectory)
-#   env:
-#     NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
-#   displayName: 'Deploy to netlify'
