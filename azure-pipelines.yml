@@ -43,7 +43,7 @@ stages:
           ls -la $(Build.ArtifactStagingDirectory)
       - task: PublishPipelineArtifact@1
         inputs:
-          path: $(Build.ArtifactStagingDirectory)
+          path: '$(Build.ArtifactStagingDirectory)'
           artifact: 'WebApp'
 
 - stage: deploy
@@ -68,7 +68,7 @@ stages:
           deploy:
             steps:
               - script: |
-                  ls -la
+                  ls -la $(Build.SourcesDirectory)
                   # sudo npm i -g netlify-cli
                   # ntl deploy --dir=build --prod
                 env:
