@@ -57,7 +57,7 @@ stages:
           inputs:
             buildType: 'current'
             artifactName: 'WebApp'
-            targetPath: '$(Build.SourcesDirectory)'
+            targetPath: '$(System.ArtifactsDirectory)'
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
@@ -68,9 +68,9 @@ stages:
           deploy:
             steps:
               - script: |
+                  sudo npm i -g netlify-cli
+                  cd $(System.ArtifactsDirectory)/WebApp
                   ls -la
-                  # sudo npm i -g netlify-cli
-                  # ntl deploy --dir=build --prod
+                  ntl deploy --dir=build --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
-
