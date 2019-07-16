@@ -65,8 +65,9 @@ stages:
           deploy:
             steps:
               - script: |
-                  sudo npm i -g netlify-cli
-                  ntl deploy --dir=build --prod
+                  ls -la
+                  # sudo npm i -g netlify-cli
+                  # ntl deploy --dir=build --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
 
