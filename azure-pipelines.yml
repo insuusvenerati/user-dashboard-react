@@ -37,7 +37,10 @@ stages:
       #       .netlify/**
       #     flattenFolders: true
       #     targetFolder: $(Build.ArtifactStagingDirectory)
-      - script: cp -R build/ .netlify/ netlify.toml $(Build.ArtifactStagingDirectory)
+      - script: |
+          ls -la
+          cp -R build/ .netlify/ netlify.toml $(Build.ArtifactStagingDirectory)
+          ls -la $(Build.ArtifactStagingDirectory)
       - task: PublishPipelineArtifact@1
         inputs:
           path: $(Build.ArtifactStagingDirectory)
