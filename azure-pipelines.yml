@@ -47,22 +47,32 @@ stages:
             downloadType: 'single'
             artifactName: 'WebApp'
     - deployment: DeployJob
+      displayName: Deploy Job
       pool:
-        vmImage: 'ubuntu-latest'
-      environment: production
-      displayName: Deploy to Netlify
+        vmImage: Ubuntu-16.04
+      environment: staging
       strategy:
         runOnce:
           deploy:
             steps:
-              # - task: DownloadBuildArtifacts@1
-              #   inputs:
-              #     buildType: 'current'
-              #     downloadType: 'single'
-              #     artifactName: 'WebApp'
-              - script: |
-                  yarn global add netlify-cli
-                  ntl deploy --dir=WebApp --prod
-                env:
-                  NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
+            - script: echo Hello
+    # - deployment: DeployJob
+    #   pool:
+    #     vmImage: 'ubuntu-latest'
+    #   environment: production
+    #   displayName: Deploy to Netlify
+    #   strategy:
+    #     runOnce:
+    #       deploy:
+    #         steps:
+    #           # - task: DownloadBuildArtifacts@1
+    #           #   inputs:
+    #           #     buildType: 'current'
+    #           #     downloadType: 'single'
+    #           #     artifactName: 'WebApp'
+    #           - script: |
+    #               yarn global add netlify-cli
+    #               ntl deploy --dir=WebApp --prod
+    #             env:
+    #               NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
 
