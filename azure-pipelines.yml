@@ -45,6 +45,7 @@ stages:
           inputs:
             buildType: 'current'
             artifactName: 'WebApp'
+            targetPath: '$(Build.SourcesDirectory)/build'
     - deployment: DeployJob
       displayName: Deploy Job
       pool:
