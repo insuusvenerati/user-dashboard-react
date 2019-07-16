@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.9.0",
     "@sentry/browser": "^5.4.3",
     "bulma": "^0.7.5",
     "bulma-pageloader": "^2.1.0",
