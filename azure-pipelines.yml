@@ -43,6 +43,7 @@ stages:
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
+      environment: dev
       displayName: Deploy to Netlify
       strategy:
         runOnce:
