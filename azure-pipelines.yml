@@ -37,15 +37,15 @@ stages:
 - stage: deploy
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
-    - job: downloadArtifact
-      pool:
-        vmImage: 'ubuntu-latest'
-      steps:
-        - task: DownloadBuildArtifacts@1
-          inputs:
-            buildType: 'current'
-            downloadType: 'single'
-            artifactName: 'WebApp'
+    # - job: downloadArtifact
+    #   pool:
+    #     vmImage: 'ubuntu-latest'
+    #   steps:
+    #     - task: DownloadBuildArtifacts@1
+    #       inputs:
+    #         buildType: 'current'
+    #         downloadType: 'single'
+    #         artifactName: 'WebApp'
     - job: deploy
     - deployment: DeployJob
       pool:
