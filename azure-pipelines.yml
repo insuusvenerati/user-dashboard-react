@@ -49,15 +49,6 @@ stages:
 - stage: deploy
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
-    - job: downloadArtifact
-      pool:
-        vmImage: 'ubuntu-latest'
-      steps:
-        - task: DownloadPipelineArtifact@1
-          inputs:
-            buildType: 'current'
-            artifactName: 'WebApp'
-            targetPath: '$(System.ArtifactsDirectory)'
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
@@ -67,6 +58,11 @@ stages:
         runOnce:
           deploy:
             steps:
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  buildType: 'current'
+                  artifactName: 'WebApp'
+                  targetPath: '$(System.ArtifactsDirectory)'
               - script: |
                   sudo npm i -g netlify-cli
                   cd $(System.ArtifactsDirectory)/WebApp
