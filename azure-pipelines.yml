@@ -71,7 +71,7 @@ stages:
               #     downloadType: 'single'
               #     artifactName: 'WebApp'
               - script: |
-                  yarn global add netlify-cli
+                  npm i -g netlify-cli
                   ntl deploy --dir=WebApp --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
