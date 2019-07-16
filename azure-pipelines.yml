@@ -31,7 +31,6 @@ steps:
   workingDirectory: $(Build.SourcesDirectory)
   displayName: 'npm install and build'
 
-steps:
 - task: PublishPipelineArtifact@1
   inputs:
     path: $(Build.SourcesDirectory)/build
