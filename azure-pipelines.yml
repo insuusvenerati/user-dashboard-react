@@ -65,8 +65,8 @@ stages:
                   targetPath: '$(System.ArtifactsDirectory)'
               - script: |
                   sudo npm i -g netlify-cli
+                  ls -la $(System.ArtifactsDirectory)
                   cd $(System.ArtifactsDirectory)/WebApp
-                  ls -la
                   ntl deploy --dir=build --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
