@@ -46,16 +46,6 @@ stages:
             buildType: 'current'
             artifactName: 'WebApp'
             targetPath: '$(Build.SourcesDirectory)/build'
-    # - deployment: DeployJob
-    #   displayName: Deploy Job
-    #   pool:
-    #     vmImage: Ubuntu-16.04
-    #   environment: staging
-    #   strategy:
-    #     runOnce:
-    #       deploy:
-    #         steps:
-    #         - script: echo Hello
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
@@ -65,14 +55,9 @@ stages:
         runOnce:
           deploy:
             steps:
-              # - task: DownloadBuildArtifacts@1
-              #   inputs:
-              #     buildType: 'current'
-              #     downloadType: 'single'
-              #     artifactName: 'WebApp'
               - script: |
-                  npm i -g netlify-cli
-                  ntl deploy --dir=WebApp --prod
+                  sudo npm i -g netlify-cli
+                  ntl deploy --dir=Build --prod
                 env:
                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
 
