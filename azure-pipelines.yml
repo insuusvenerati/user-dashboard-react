@@ -57,7 +57,7 @@ stages:
           inputs:
             buildType: 'current'
             artifactName: 'WebApp'
-            targetPath: '$(Pipeline.Workspace)'
+            targetPath: '$(Build.SourcesDirectory)'
     - deployment: DeployJob
       pool:
         vmImage: 'ubuntu-latest'
@@ -68,7 +68,7 @@ stages:
           deploy:
             steps:
               - script: |
-                  ls -la $(Build.SourcesDirectory)
+                  ls -la
                   # sudo npm i -g netlify-cli
                   # ntl deploy --dir=build --prod
                 env:
