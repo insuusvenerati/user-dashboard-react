@@ -34,37 +34,36 @@ stages:
           path: $(Build.SourcesDirectory)/build
           artifact: 'WebApp'
 
-# - stage: deploy
-#   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-#   jobs:
-#     # - job: downloadArtifact
-#     #   pool:
-#     #     vmImage: 'ubuntu-latest'
-#     #   steps:
-#     #     - task: DownloadBuildArtifacts@1
-#     #       inputs:
-#     #         buildType: 'current'
-#     #         downloadType: 'single'
-#     #         artifactName: 'WebApp'
-#     - job: deploy
-#     - deployment: DeployJob
-#       pool:
-#         vmImage: 'ubuntu-latest'
-#       environment: production
-#       displayName: Deploy to Netlify
-#       strategy:
-#         runOnce:
-#           deploy:
-#             steps:
-#               - task: DownloadBuildArtifacts@1
-#                 inputs:
-#                   buildType: 'current'
-#                   downloadType: 'single'
-#                   artifactName: 'WebApp'
-#               - script: |
-#                   yarn global add netlify-cli
-#               - script: |
-#                   ntl deploy --dir=WebApp --prod
-#                 env:
-#                   NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
+- stage: deploy
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+    - job: downloadArtifact
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - task: DownloadBuildArtifacts@1
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'WebApp'
+    - job: deploy
+    - deployment: DeployJob
+      pool:
+        vmImage: 'ubuntu-latest'
+      environment: production
+      displayName: Deploy to Netlify
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              # - task: DownloadBuildArtifacts@1
+              #   inputs:
+              #     buildType: 'current'
+              #     downloadType: 'single'
+              #     artifactName: 'WebApp'
+              - script: |
+                  yarn global add netlify-cli
+                  ntl deploy --dir=WebApp --prod
+                env:
+                  NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
 
