@@ -10,7 +10,6 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-
 steps:
 - task: NodeTool@0
   inputs:
@@ -26,16 +25,21 @@ steps:
     path: $(YARN_CACHE_FOLDER)
   displayName: 'Cache Yarn folders'
 
-
 - script: |
     yarn
     yarn build
   workingDirectory: $(Build.SourcesDirectory)
   displayName: 'npm install and build'
 
-- script: |
-    yarn deploy
-  workingDirectory: $(Build.SourcesDirectory)
-  env:
-    NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
-  displayName: 'Deploy to netlify'
+steps:
+- task: PublishPipelineArtifact@1
+  inputs:
+    path: $(Build.SourcesDirectory)/build
+    artifact: Build
+
+# - script: |
+#     yarn deploy
+#   workingDirectory: $(Build.SourcesDirectory)
+#   env:
+#     NETLIFY_AUTH_TOKEN: $(NETLIFY_AUTH_TOKEN)
+#   displayName: 'Deploy to netlify'

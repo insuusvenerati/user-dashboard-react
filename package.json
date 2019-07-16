@@ -19,17 +19,14 @@
     "react-error-boundary": "^1.2.5",
     "react-loading": "^2.0.3",
     "react-scripts": "3.0.1",
-    "redux-persist": "^5.10.0",
-    "snyk": "^1.193.2"
+    "redux-persist": "^5.10.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "deploy": "netlify deploy --prod",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "deploy": "netlify deploy --prod"
   },
   "browserslist": {
     "production": [
@@ -54,6 +51,5 @@
     "glob-all": "^3.1.0",
     "purgecss-webpack-plugin": "^1.5.0",
     "react-app-rewired": "^2.1.3"
-  },
-  "snyk": true
+  }
 }
