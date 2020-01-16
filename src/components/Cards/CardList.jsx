@@ -1,7 +1,6 @@
 /* eslint-disable space-before-function-paren */
 import React, { useEffect } from 'react'
 import Card from './Card'
-import ErrorBoundary from '../ErrorBoundry/ErrorBoundry'
 import classNames from 'classnames'
 import ReactLoading from 'react-loading'
 import { useStoreState, useStoreActions } from 'easy-peasy'
@@ -27,7 +26,7 @@ const CardList = () => {
     if (zones.length < 1) {
       getZones()
     }
-  }, [])
+  })
 
   if (loadingZones) {
     return (
@@ -54,17 +53,15 @@ const CardList = () => {
     )
   } else {
     return (
-      <ErrorBoundary>
-        <section style={{ height: '100vh' }} className="section">
-          <div className="container">
-            <div className="tile is-ancestor">
-              {randomZones.map(zone => {
-                return <Card key={zone.ID} title={zone.Name_lang} />
-              })}
-            </div>
+      <section style={{ height: '100vh' }} className="section">
+        <div className="container">
+          <div className="tile is-ancestor">
+            {randomZones.map(zone => {
+              return <Card key={zone.ID} title={zone.Name_lang} />
+            })}
           </div>
-        </section>
-      </ErrorBoundary>
+        </div>
+      </section>
     )
   }
 }
