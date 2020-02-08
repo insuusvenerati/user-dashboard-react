@@ -1,68 +1,49 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+[![Netlify Status](https://api.netlify.com/api/v1/badges/206fd78a-9cd4-4755-8ba9-617c439cca46/deploy-status)](https://app.netlify.com/sites/practical-snyder-3e7c3b/deploys) [![Build Status](https://travis-ci.org/insuusvenerati/user-dashboard-react.svg?branch=master)](https://travis-ci.org/insuusvenerati/user-dashboard-react)
 
-In the project directory, you can run:
+# WoW Zone Generator
 
-### `npm start`
+Used to generate random World of Warcraft zone names for art prompts.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+```
+git clone https://github.com/insuusvenerati/user-dashboard-react
 
-### `npm test`
+yarn
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+yarn start
+```
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Latest NodeJS
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Latest Yarn
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+Add additional notes about how to deploy this on a live system
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://reactjs.org/) - The web framework used
+- [Netlify](https://www.netlify.com/) - Deployment
+- [Sentry](https://sentry.io/) - Error reporting
+- [Bulma](https://bulma.io) - CSS Framework
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Contributing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Pull requests are always welcomed.
 
-## Learn More
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#specification) - Uses conventional commits
+- [StandardJS](https://standardjs.com/) - Uses StandardJS for linting
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Versioning
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We use [SemVer](http://semver.org/) for versioning.
 
-### Code Splitting
+## Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- **Sean Norwood** - _Initial work_ - [insuusvenerati](https://github.com/insuusvenerati)
