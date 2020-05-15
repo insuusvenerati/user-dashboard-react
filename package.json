@@ -40,7 +40,7 @@
     ]
   },
   "devDependencies": {
-    "@sentry/cli": "1.49.0",
+    "@sentry/cli": "1.52.4",
     "@welldone-software/why-did-you-render": "3.4.1",
     "customize-cra": "0.2.14",
     "eslint-config-standard": "13.0.1",
