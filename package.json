@@ -9,7 +9,7 @@
     "bulma-switch": "2.0.0",
     "classnames": "2.2.6",
     "easy-peasy": "2.6.6",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "netlify-cli": "2.25.0",
     "node-sass": "4.13.0",
     "react": "16.12.0",
